@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/14 17:57:30 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/14 19:49:13 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
 # include <mlx.h>
 # include "../libft/libft.h"
 
@@ -25,7 +28,6 @@ typedef struct s_map
 	int		height;
 	int		width;
 	int		items;
-	int		player;
 }	t_map;
 
 typedef struct	s_vars
