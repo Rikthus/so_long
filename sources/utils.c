@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:08:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/15 20:23:29 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/15 23:11:41 by tulipe           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ static	char	*get_loop(int fd)
 			return (NULL);
 		}
 		new = get_next_line(fd);
-		if (!new)
-		{
-			free(actual);
-			return (NULL);
-		}
 	}
 	return (actual);
 }

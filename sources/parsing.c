@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:18:33 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/15 20:21:27 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/15 23:31:44 by tulipe           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static	int	rectangle_map(t_vars *vars)
 		return (0);
 	vars->map.height = i;
 	vars->map.width = l_size;
-	write(1, "ok\n", 3);
 	return (1);
 }
 
@@ -81,7 +80,7 @@ static	int	components(t_map *map)
 				map->items++;
 			else if (map->world[i][j] == 'E')
 				map->exits++;
-			else if (map->world[i][j] != '1' || map->world[i][j] != '0')
+			else if (map->world[i][j] != '1' && map->world[i][j] != '0')
 				return (0);
 			j++;
 		}
@@ -96,12 +95,12 @@ int	parsing(char **argv, t_vars *vars)
 {
 	if (check_f_format(argv[1]) == 0)
 		return (0);
-	vars->map.world = ft_split_me(get_map(argv[1]), '\n');
+	vars->map.world = ft_split(get_map(argv[1]), '\n');
 	if (!(vars->map.world))
 		return (0);
-
-	check_array(vars->map.world);
-
+	vars->map.player = 0;
+	vars->map.items = 0;
+	vars->map.exits = 0;
 	if (!rectangle_map(vars) || !components(&(vars->map)) || !position(&(vars->map)))
 	{
 		free_split(vars->map.world);
