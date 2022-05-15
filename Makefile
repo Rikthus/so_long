@@ -15,7 +15,6 @@ DIR_MLX	:=	mlx
 
 LST_SRCS	:=	main.c \
 				parsing.c \
-				ft_split_me.c \
 				utils.c
 LST_OBJS	:=	$(LST_SRCS:.c=.o)
 LST_INCS	:=	so_long.h

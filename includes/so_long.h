@@ -6,7 +6,7 @@
 /*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/15 23:10:37 by tulipe           ###   ########lyon.fr   */
+/*   Updated: 2022/05/15 23:35:56 by tulipe           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ typedef struct	s_vars
 
 // PARSING
 int		parsing(char **argv, t_vars *vars);
-
-// FT_SPLIT_ME
-char	**ft_split_me(char *str, char c);
 
 // UTILS
 char	*get_map(char *file);
