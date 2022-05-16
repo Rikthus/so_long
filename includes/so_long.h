@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/15 23:35:56 by tulipe           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 16:14:18 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_map
 	int		items;
 	int		exits;
 	int		player;
+	int		p_x;
+	int		p_y;
 }	t_map;
 
 typedef struct	s_vars
@@ -40,11 +42,34 @@ typedef struct	s_vars
 	void	*img;
 	int		img_width;
 	int		img_height;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_lenght;
+	int		endian;
 	t_map	map;
 }	t_vars;
 
+// MAIN
+int		key_hook(int keycode, t_vars *vars);
+void	fill_win(t_vars *vars);
+void	put_player_img(t_vars *vars, int x, int y);
+
 // PARSING
 int		parsing(char **argv, t_vars *vars);
+
+// FILL_WIN
+int		put_bg(t_vars *vars);
+int		put_wall(t_vars *vars);
+int		put_item(t_vars *vars);
+int		put_player(t_vars *vars);
+int		put_exit(t_vars *vars);
+
+// KEY_HANDLER
+void	exit_win(t_vars *vars);
+void	mv_up(t_vars *vars);
+void	mv_down(t_vars *vars);
+void	mv_left(t_vars *vars);
+void	mv_right(t_vars *vars);
 
 // UTILS
 char	*get_map(char *file);
