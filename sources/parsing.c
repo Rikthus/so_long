@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:18:33 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/15 23:31:44 by tulipe           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 17:46:18 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ static	int	components(t_map *map)
 		while (map->world[i][j])
 		{
 			if (map->world[i][j] == 'P')
+			{
+				map->p_x = i;
+				map->p_y = j;
 				map->player++;
+			}
 			else if (map->world[i][j] == 'C')
 				map->items++;
 			else if (map->world[i][j] == 'E')

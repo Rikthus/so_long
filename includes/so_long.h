@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 16:14:18 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 19:04:12 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,22 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include "../libft/libft.h"
+
+typedef struct s_data
+{
+	int		img_width;
+	int		img_heigth;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	void	*img_bg;
+	void	*img_player;
+	void	*img_item;
+	void	*img_exit;
+	void	*img_wall;
+}	t_data;
+
 
 typedef struct s_map
 {
@@ -38,14 +54,7 @@ typedef struct	s_vars
 {
 	void	*mlx;
 	void	*mlx_win;
-	void	*player_img;
-	void	*img;
-	int		img_width;
-	int		img_height;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_lenght;
-	int		endian;
+	t_data	data;
 	t_map	map;
 }	t_vars;
 
