@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:08:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 19:24:10 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 14:44:41 by tulipe           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 static	char	*get_loop(int fd)
 {
 	static	char	*actual = "\0";
+	char			*past;
 	char			*new;
 
+	past = NULL;
 	new = get_next_line(fd);
 	if (!new)
 		return (NULL);
 	while (new)
 	{
+		if (actual[0] != '\0')
+			past = actual;
 		actual = ft_strjoin(actual, new);
 		if (!actual)
 		{
 			free(new);
 			return (NULL);
 		}
+		free(past);
 		free(new);
 		new = get_next_line(fd);
 	}

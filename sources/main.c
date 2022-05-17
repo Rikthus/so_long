@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:11:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 13:09:59 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 14:38:17 by tulipe           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
+	vars.map.player = 0;
+	vars.map.items = 0;
+	vars.map.exits = 0;
+	vars.map.nb_mv = 0;
 	if (argc != 2 || !parsing(argv, &vars))
 		return (0);
 	vars.mlx = mlx_init();

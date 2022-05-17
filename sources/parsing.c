@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:18:33 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 13:07:24 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 14:38:48 by tulipe           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,19 +97,24 @@ static	int	components(t_map *map)
 
 int	parsing(char **argv, t_vars *vars)
 {
+	char	*map;
+
 	if (check_f_format(argv[1]) == 0)
 	{
 		ft_printf("Error\nBad map file\n");
 		return (0);
 	}
-	vars->map.world = ft_split(get_map(argv[1]), '\n');
+	map = get_map(argv[1]);
+	if (!map)
+	{
+		ft_printf("Error\nFile not found\n");
+		return (0);
+	}
+	vars->map.world = ft_split(map, '\n');
+	free(map);
 	if (!(vars->map.world))
 		return (0);
-	vars->map.player = 0;
-	vars->map.items = 0;
-	vars->map.exits = 0;
-	vars->map.nb_mv = 0;
-	if (!rectangle_map(vars) || !components(&(vars->map)) || !position(&(vars->map)))
+	if (!rectangle_map(vars) || !components(&vars->map) || !position(&vars->map))
 	{
 		free_split(vars->map.world);
 		ft_printf("Error\nBad map format\n");
