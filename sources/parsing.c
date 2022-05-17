@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:18:33 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 11:51:13 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 13:07:24 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int	parsing(char **argv, t_vars *vars)
 	vars->map.player = 0;
 	vars->map.items = 0;
 	vars->map.exits = 0;
+	vars->map.nb_mv = 0;
 	if (!rectangle_map(vars) || !components(&(vars->map)) || !position(&(vars->map)))
 	{
 		free_split(vars->map.world);

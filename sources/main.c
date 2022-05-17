@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:11:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 12:35:23 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 13:09:59 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	put_player_img(t_vars *vars, int x, int y)
 {
+	vars->map.nb_mv++;
+	ft_printf("Moves: %d\n", vars->map.nb_mv);
 	vars->data.img_bg = mlx_xpm_file_to_image(vars->mlx, "./assets/bg.xpm",
 	&vars->data.img_width, &vars->data.img_heigth);
 	if (!vars->data.img_bg)

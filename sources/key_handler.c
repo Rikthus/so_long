@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:52:52 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 12:37:29 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 13:10:51 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	exit_win(t_vars *vars)
 	mlx_destroy_image(vars->mlx, vars->data.img_item);
 	mlx_destroy_image(vars->mlx, vars->data.img_wall);
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
-	//close mlx init
 	exit(0);
 }
 

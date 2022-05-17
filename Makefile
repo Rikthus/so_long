@@ -3,7 +3,7 @@ NAME	:=	so_long
 CSAN	:=	-fsanitize=address -g3
 
 CC	:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror $(CSAN)
+CFLAGS	:=	-Wall -Wextra -Werror #$(CSAN)
 MLX_FLAGS	:=	-framework OpenGl -framework AppKit
 
 DIR_SRCS	:=	sources

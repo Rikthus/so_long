@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 12:35:58 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 13:07:12 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_map
 	int		player;
 	int		p_x;
 	int		p_y;
+	int		nb_mv;
 }	t_map;
 
 typedef struct	s_vars
