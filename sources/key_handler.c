@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:52:52 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 11:45:50 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 12:37:29 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	mv_player(t_vars *vars, int x, int y)
 	else if (vars->map.world[x][y] == 'C')
 	{
 		put_player_img(vars, x, y);
+		vars->map.world[x][y] = '0';
 		vars->map.items--;
 		if (vars->map.items == 0)
 			put_exit(vars);
@@ -43,4 +44,19 @@ void	mv_player(t_vars *vars, int x, int y)
 	}
 	else
 		put_player_img(vars, x, y);
+}
+
+int	key_hook(int keycode, t_vars *vars)
+{
+	if (keycode == 53)
+		exit_win(vars);
+	else if (keycode == 13)
+		mv_player(vars, vars->map.p_x - 1, vars->map.p_y);
+	else if (keycode == 1)
+		mv_player(vars, vars->map.p_x + 1, vars->map.p_y);
+	else if (keycode == 0)
+		mv_player(vars, vars->map.p_x, vars->map.p_y - 1);
+	else if (keycode == 2)
+		mv_player(vars, vars->map.p_x, vars->map.p_y + 1);
+	return (1);
 }

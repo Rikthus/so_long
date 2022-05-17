@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:11:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 11:54:40 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 12:35:23 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@ void	put_player_img(t_vars *vars, int x, int y)
 	&vars->data.bits_per_pixel, &vars->data.line_length, &vars->data.endian);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 	vars->data.img_player, y * 64, x * 64);
-}
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == 53)
-		exit_win(vars);
-	else if (keycode == 13)
-		mv_player(vars, vars->map.p_x - 1, vars->map.p_y);
-	else if (keycode == 1)
-		mv_player(vars, vars->map.p_x + 1, vars->map.p_y);
-	else if (keycode == 0)
-		mv_player(vars, vars->map.p_x, vars->map.p_y - 1);
-	else if (keycode == 2)
-		mv_player(vars, vars->map.p_x, vars->map.p_y + 1);
-	return (1);
 }
 
 void	fill_win(t_vars *vars)

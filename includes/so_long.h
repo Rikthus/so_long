@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 11:36:04 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 12:35:58 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct	s_vars
 }	t_vars;
 
 // MAIN
-int		key_hook(int keycode, t_vars *vars);
 void	fill_win(t_vars *vars);
 void	put_player_img(t_vars *vars, int x, int y);
 
@@ -76,6 +75,7 @@ int		put_exit(t_vars *vars);
 // KEY_HANDLER
 void	exit_win(t_vars *vars);
 void	mv_player(t_vars *vars, int x, int y);
+int		key_hook(int keycode, t_vars *vars);
 
 // UTILS
 char	*get_map(char *file);
