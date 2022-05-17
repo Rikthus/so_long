@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:11:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 19:09:57 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 11:54:40 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	put_player_img(t_vars *vars, int x, int y)
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 	vars->data.img_bg, vars->map.p_y * 64, vars->map.p_x * 64);
 	vars->map.p_x = x;
-	vars->map.p_x = y;
+	vars->map.p_y = y;
 	vars->data.addr = mlx_get_data_addr(vars->data.img_player,
 	&vars->data.bits_per_pixel, &vars->data.line_length, &vars->data.endian);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win,
@@ -38,13 +38,13 @@ int	key_hook(int keycode, t_vars *vars)
 	if (keycode == 53)
 		exit_win(vars);
 	else if (keycode == 13)
-		mv_up(vars);
+		mv_player(vars, vars->map.p_x - 1, vars->map.p_y);
 	else if (keycode == 1)
-		mv_down(vars);
+		mv_player(vars, vars->map.p_x + 1, vars->map.p_y);
 	else if (keycode == 0)
-		mv_left(vars);
+		mv_player(vars, vars->map.p_x, vars->map.p_y - 1);
 	else if (keycode == 2)
-		mv_right(vars);
+		mv_player(vars, vars->map.p_x, vars->map.p_y + 1);
 	return (1);
 }
 
@@ -52,11 +52,7 @@ void	fill_win(t_vars *vars)
 {
 	if (!put_bg(vars) || !put_wall(vars) || !put_item(vars) || !put_player(vars))
 	{
-		free_split(vars->map.world);
-		exit(0);
-	}
-	if (vars->map.items == 0 && !put_exit(vars))
-	{
+		ft_printf("Error\nNo asset\n");
 		free_split(vars->map.world);
 		exit(0);
 	}
@@ -67,10 +63,7 @@ int	main(int argc, char **argv)
 	t_vars	vars;
 
 	if (argc != 2 || !parsing(argv, &vars))
-	{
-		ft_printf("Error\n");
 		return (0);
-	}
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:18:33 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 17:46:18 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 11:51:13 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ static	int	components(t_map *map)
 int	parsing(char **argv, t_vars *vars)
 {
 	if (check_f_format(argv[1]) == 0)
+	{
+		ft_printf("Error\nBad map file\n");
 		return (0);
+	}
 	vars->map.world = ft_split(get_map(argv[1]), '\n');
 	if (!(vars->map.world))
 		return (0);
@@ -108,6 +111,7 @@ int	parsing(char **argv, t_vars *vars)
 	if (!rectangle_map(vars) || !components(&(vars->map)) || !position(&(vars->map)))
 	{
 		free_split(vars->map.world);
+		ft_printf("Error\nBad map format\n");
 		return (0);
 	}
 	return (1);

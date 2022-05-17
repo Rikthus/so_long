@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:21:36 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 19:06:59 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 11:55:00 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	put_bg(t_vars *vars)
 		j = 0;
 		while (vars->map.world[i][j])
 		{
-			if (vars->map.world[i][j] == '0')
+			if (vars->map.world[i][j] == '0' || vars->map.world[i][j] == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 				vars->data.img_bg, j * 64, i * 64);
 			j++;
@@ -137,7 +137,7 @@ int	put_exit(t_vars *vars)
 		j = 0;
 		while (vars->map.world[i][j])
 		{
-			if (vars->map.world[i][j] == '1')
+			if (vars->map.world[i][j] == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 				vars->data.img_exit, j * 64, i * 64);
 			j++;

@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:52:52 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 18:58:02 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 11:45:50 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,65 +25,22 @@ void	exit_win(t_vars *vars)
 	exit(0);
 }
 
-void	mv_up(t_vars *vars)
+void	mv_player(t_vars *vars, int x, int y)
 {
-	if (vars->map.world[vars->map.p_x - 1][vars->map.p_y] == 'E' &&
-		vars->map.items == 0)
-		put_player_img(vars, vars->map.p_x - 1, vars->map.p_y);
-	else if (vars->map.world[vars->map.p_x - 1][vars->map.p_y] == '0')
-		put_player_img(vars, vars->map.p_x - 1, vars->map.p_y);
-	else if (vars->map.world[vars->map.p_x - 1][vars->map.p_y] == 'C')
+	if (vars->map.world[x][y] == '1')
+		return ;
+	else if (vars->map.world[x][y] == 'C')
 	{
-		put_player_img(vars, vars->map.p_x - 1, vars->map.p_y);
+		put_player_img(vars, x, y);
 		vars->map.items--;
+		if (vars->map.items == 0)
+			put_exit(vars);
 	}
-	else if (vars->map.world[vars->map.p_x - 1][vars->map.p_y] == 'E')
-		exit_win(vars);
-}
-
-void	mv_down(t_vars *vars)
-{
-	if (vars->map.world[vars->map.p_x - 1][vars->map.p_y] == 'E' &&
-		vars->map.items == 0)
-		put_player_img(vars, vars->map.p_x + 1, vars->map.p_y);
-	else if (vars->map.world[vars->map.p_x + 1][vars->map.p_y] == '0')
-		put_player_img(vars, vars->map.p_x + 1, vars->map.p_y);
-	else if (vars->map.world[vars->map.p_x + 1][vars->map.p_y] == 'C')
+	else if (vars->map.world[x][y] == 'E' && vars->map.items == 0)
 	{
-		put_player_img(vars, vars->map.p_x + 1, vars->map.p_y);
-		vars->map.items--;
-	}
-	else if (vars->map.world[vars->map.p_x + 1][vars->map.p_y] == 'E')
+		put_player_img(vars, x, y);
 		exit_win(vars);
-}
-void	mv_left(t_vars *vars)
-{
-	if (vars->map.world[vars->map.p_x][vars->map.p_y - 1] == 'E' &&
-		vars->map.items == 0)
-		put_player_img(vars, vars->map.p_x, vars->map.p_y - 1);
-	else if (vars->map.world[vars->map.p_x][vars->map.p_y - 1] == '0')
-		put_player_img(vars, vars->map.p_x, vars->map.p_y - 1);
-	else if (vars->map.world[vars->map.p_x][vars->map.p_y - 1] == 'C')
-	{
-		put_player_img(vars, vars->map.p_x, vars->map.p_y - 1);
-		vars->map.items--;
 	}
-	else if (vars->map.world[vars->map.p_x][vars->map.p_y - 1] == 'E')
-		exit_win(vars);
-}
-
-void	mv_right(t_vars *vars)
-{
-	if (vars->map.world[vars->map.p_x][vars->map.p_y + 1] == 'E' &&
-		vars->map.items == 0)
-		put_player_img(vars, vars->map.p_x, vars->map.p_y + 1);
-	else if (vars->map.world[vars->map.p_x][vars->map.p_y + 1] == '0')
-		put_player_img(vars, vars->map.p_x, vars->map.p_y + 1);
-	else if (vars->map.world[vars->map.p_x ][vars->map.p_y + 1] == 'C')
-	{
-		put_player_img(vars, vars->map.p_x, vars->map.p_y + 1);
-		vars->map.items--;
-	}
-	else if (vars->map.world[vars->map.p_x][vars->map.p_y + 1] == 'E')
-		exit_win(vars);
+	else
+		put_player_img(vars, x, y);
 }

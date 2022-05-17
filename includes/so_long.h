@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 19:04:12 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 11:36:04 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int		put_exit(t_vars *vars);
 
 // KEY_HANDLER
 void	exit_win(t_vars *vars);
-void	mv_up(t_vars *vars);
-void	mv_down(t_vars *vars);
-void	mv_left(t_vars *vars);
-void	mv_right(t_vars *vars);
+void	mv_player(t_vars *vars, int x, int y);
 
 // UTILS
 char	*get_map(char *file);

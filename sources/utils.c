@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:08:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/16 16:15:02 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 19:24:10 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	char	*get_loop(int fd)
 {
-	char	*actual = "\0";
-	char	*new;
+	static	char	*actual = "\0";
+	char			*new;
 
 	new = get_next_line(fd);
 	if (!new)
@@ -28,6 +28,7 @@ static	char	*get_loop(int fd)
 			free(new);
 			return (NULL);
 		}
+		free(new);
 		new = get_next_line(fd);
 	}
 	return (actual);
