@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:18:33 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 14:38:48 by tulipe           ###   ########lyon.fr   */
+/*   Updated: 2022/05/18 12:25:46 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static	int	position(t_map *map)
 		j = 0;
 		while (map->world[i][j])
 		{
-			if ((i == 0 || i == map->height - 1 || j == 0 || j == map->width - 1)
+			if ((i == 0 || i == map->height - 1 || j == 0
+					|| j == map->width - 1)
 				&& map->world[i][j] != '1')
 				return (0);
 			j++;
@@ -75,11 +76,7 @@ static	int	components(t_map *map)
 		while (map->world[i][j])
 		{
 			if (map->world[i][j] == 'P')
-			{
-				map->p_x = i;
-				map->p_y = j;
-				map->player++;
-			}
+				init_player_pos(map, i, j);
 			else if (map->world[i][j] == 'C')
 				map->items++;
 			else if (map->world[i][j] == 'E')
@@ -101,23 +98,24 @@ int	parsing(char **argv, t_vars *vars)
 
 	if (check_f_format(argv[1]) == 0)
 	{
-		ft_printf("Error\nBad map file\n");
+		ft_putstr_fd("Error\nBad map file\n", 2);
 		return (0);
 	}
 	map = get_map(argv[1]);
 	if (!map)
 	{
-		ft_printf("Error\nFile not found\n");
+		ft_putstr_fd("Error\nBad map file\n", 2);
 		return (0);
 	}
 	vars->map.world = ft_split(map, '\n');
 	free(map);
 	if (!(vars->map.world))
 		return (0);
-	if (!rectangle_map(vars) || !components(&vars->map) || !position(&vars->map))
+	if (!rectangle_map(vars) || !components(&vars->map)
+		|| !position(&vars->map))
 	{
 		free_split(vars->map.world);
-		ft_printf("Error\nBad map format\n");
+		ft_putstr_fd("Error\nBad map format\n", 2);
 		return (0);
 	}
 	return (1);

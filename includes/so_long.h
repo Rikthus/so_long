@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:20:30 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 13:07:12 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/18 12:03:15 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int		key_hook(int keycode, t_vars *vars);
 // UTILS
 char	*get_map(char *file);
 void	free_split(char **split);
-void	check_array(char **array);
+void	init_player_pos(t_map *map, int i, int j);
 
 #endif

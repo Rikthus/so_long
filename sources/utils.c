@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tulipe <tulipe@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:08:56 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 14:44:41 by tulipe           ###   ########lyon.fr   */
+/*   Updated: 2022/05/18 12:02:27 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	char	*get_loop(int fd)
 {
-	static	char	*actual = "\0";
+	static char		*actual = "\0";
 	char			*past;
 	char			*new;
 
@@ -65,19 +65,9 @@ void	free_split(char **split)
 	free(split);
 }
 
-void	check_array(char **array)
+void	init_player_pos(t_map *map, int i, int j)
 {
-	int i = 0;
-	int j;
-	while (array[i])
-	{
-		j = 0;
-		while (array[i][j])
-		{
-			ft_printf("%c", array[i][j]);
-			j++;
-		}
-		ft_printf("\n");
-		i++;
-	}
+	map->p_x = i;
+	map->p_y = j;
+	map->player++;
 }

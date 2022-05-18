@@ -6,7 +6,7 @@
 /*   By: maxperei <maxperei@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:52:52 by maxperei          #+#    #+#             */
-/*   Updated: 2022/05/17 13:10:51 by maxperei         ###   ########lyon.fr   */
+/*   Updated: 2022/05/18 11:52:08 by maxperei         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	exit_win(t_vars *vars)
 	free_split(vars->map.world);
 	mlx_destroy_image(vars->mlx, vars->data.img_bg);
 	mlx_destroy_image(vars->mlx, vars->data.img_player);
-	mlx_destroy_image(vars->mlx, vars->data.img_exit);
+	if (vars->data.img_exit)
+		mlx_destroy_image(vars->mlx, vars->data.img_exit);
 	mlx_destroy_image(vars->mlx, vars->data.img_item);
 	mlx_destroy_image(vars->mlx, vars->data.img_wall);
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
